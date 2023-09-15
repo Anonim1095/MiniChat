@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>MiniChat</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="content">
+        <div class="serverlist">
+            <div class="time"><p id="time">18:17</p></div>
+            <div class="server standartServer" id="s0">
+                <span class="serverName">Standart</span>
+                <span class="serverId">#0</span>
+                <p class="lastMessage">No Messages</p>
+            </div>
+            <div class="hostname">
+                <input id="hostname" type="text" value="localhost:3000" placeholder="hostname">
+            </div>
+            <div class="serversList" id="serversList">
+                <div class="serversContainer">
+                    <div class="servers">
+                    </div>
+                </div>
+            </div>
+            <div class="newServer">
+                <input id="serverPass" type="text" placeholder="server id">
+                <button id="newServer">Add Server</button>
+            </div>
+            <div class="dmsList" id="dmsList">
+                <div class="dms">
+                </div>
+            </div>
+            <div class="newDm">
+               <input id="userId" type="text" placeholder="user id">
+                <button id="newDm">Add user</button>
+            </div>
+            <div class="userSettings" id="userSettings">
+                <div class="configuration">
+                    <select id="colorChoose" value="null">
+                        <option value="null">Null</option>
+                        <option value="red">Red</option>
+                        <option value="green">Green</option>
+                        <option value="blue">Blue</option>
+                        <option value="white">White</option>
+                        <option value="black">Black</option>
+                    </select>
+                    <input type="text" id="nameinput" placeholder="nickname" value="">
+                    <button id="sendData">Send data</button>
+                </div>
+                <div class="profileCard">
+
+                </div>
+                <div class="connectionHub">
+                    <p id="connectionStatus">Status: Disconnected</p>
+                    <button id="connectionButton">Connect</button>
+                </div>
+            </div>
+        </div>
+        <div class="chat">
+            <div class="info">
+                <input type="text" id="channelId" class="channelId" value="0" placeholder="channel id">
+                <input type="text" id="channelName" class="channelName" value="Standart" placeholder="channel name">
+            </div>
+            <div class="content_chat">
+                <div class="message" id="m8903">
+                    <span class="time">19:26</span>
+                    <span class="sender">[Coffee]</span>
+                    <span class="text"> Hello guys!</span>
+                </div>
+            </div>
+            <div class="input">
+                <input id="message" class="textarea">
+                <button id="send" class="messageSend">Send message</button>
+            </div>
+        </div>
+        <div class="memberlist"></div>
+    </div>  
+    <script type="module" src="index.js"></script>
+    <script type="module" src="functions.mjs"></script>
+</body>
+
+</html>
