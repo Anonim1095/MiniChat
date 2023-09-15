@@ -10,7 +10,18 @@ const io = socketIo(server, {
     }
 });
 
+let serversData = {
+    0: {
+        id:0,
+        name:"standart",
+        messages:[]
+    }
+}
+let usersData = {}
 let connections = {}
+
+let messageCounter = 0
+let userCounter = 0
 
 function connect(socket) {
     if (connections[socket.id] == null) {
@@ -56,7 +67,8 @@ server.listen(3000, () => {
 });
 
 io.on('connection', (socket) => {
-    console.log(socket.id+" Has been connected")
+    userCounter++
+    console.log(socket.id+" Has been connected "+userCounter)
     let user = get(socket)
     if (user == false) {
         user = "Noname"
@@ -83,16 +95,19 @@ io.on('connection', (socket) => {
         })
     })
     socket.on('chat message', (msg) => {
-        console.log(socket.id+" Send message")
+        messageCounter++
+        console.log(socket.id+" Send message "+`[${msg.content}] [${messageCounter}]`)
         connect(socket)
         let user = get(socket)
-        let clr = user.ColorName || null
-        ,name = user.ProvidedName || "Noname"
+        let clr,name
+        if (msg.color == null) { clr = user.ColorName || null } else { clr = msg.color || null }
+        if (msg.name == null) { name = user.name || "Noname" } else { name = msg.name || "Noname" }
         io.emit('message', {
             type:"message",
             author:name,
             content:msg.content,
-            color:clr
+            color:clr,
+            id:messageCounter,
         })
     })
     socket.on('configuration', (msg) => {

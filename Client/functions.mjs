@@ -1,4 +1,4 @@
-export {updateTime,newServer,newDm,sendMessage,connect,disconnect,getMessages,newMessage,formatTime,serverExist}
+export {updateTime,newServer,newDm,connect,disconnectMe,newMessage,formatTime,serverExist}
 import { io, Manager } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
 
 
@@ -118,20 +118,6 @@ function connect(host,startConfig,protocol) {
     }
     return openedSocket
 }
-function disconnect(socket) {
-    socket.emit("disconnect","disconnecting")
+function disconnectMe(socket) {
     socket.close()
-}
-function sendMessage(socket,config,message) {
-    if (socket) {
-        socket.emit("message", {
-            config:config,
-            content:message,
-        })
-    } else {
-        return false, "83"
-    }
-}
-function getMessages(socket) {
-
 }
